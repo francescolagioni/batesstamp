@@ -241,22 +241,14 @@ main { padding: var(--space-7) 0; }
 .page-head h1 { margin-bottom: var(--space-3); }
 .page-head .lead { margin-bottom: 0; }
 
-/* --- Placeholders, kept as light as a pencil line --- */
+/* The line that stands where the Mac App Store badge will go. Quiet on
+   purpose: it is a promise, not a button, and there is nothing to click yet. */
 
-.placeholder {
-    border: 1px dashed var(--line);
-    border-radius: 10px;
-    color: var(--text-3);
-    font-size: var(--text-xs);
-    text-align: center;
-    line-height: 1.6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-3);
+.coming {
+    margin-top: var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--text-2);
 }
-
-.placeholder--badge { width: 190px; height: 60px; margin-top: var(--space-4); }
 
 /* --- Gallery: the store panels. One per row, side by side once the page is
    wide enough that two of them are still worth looking at. It sits outside
