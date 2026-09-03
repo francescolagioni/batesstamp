@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — BatesStamp</title>
+<meta name="description" content="Support and frequently asked questions for BatesStamp, the offline Bates numbering app for Mac.">
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="wrap">
+        <a class="brand" href="index.html"><img src="icon.png" alt="">BatesStamp</a>
+        <nav>
+            <a href="index.html">Product</a>
+            <a href="support.html" aria-current="page">Support</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+
+    <div class="page-head">
+        <h1>Support</h1>
+        <p class="lead">
+            Write to us and a person reads it. There is no ticket system and no
+            account to log into.
+        </p>
+    </div>
+
+    <div class="contact">
+        <a class="email" href="mailto:batesstamp.support@gmail.com">batesstamp.support@gmail.com</a>
+        <p>
+            English or Italian. Please include your macOS version and, if a
+            particular PDF is giving trouble, what the app said about it in the
+            list. Do not send us client documents: we do not want them, and we do
+            not need them to help.
+        </p>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq">
+
+        <section>
+            <h3>What does the number look like, and can I change it?</h3>
+            <p>
+                A number is a prefix, a zero-padded counter and a suffix:
+                <code>ACME-000001</code> is the prefix <code>ACME-</code> with
+                six digits and no suffix. You choose the prefix, the suffix, the
+                number of digits (1 to 15, six by default) and the starting
+                number. The counter then runs continuously through the whole
+                list, one number per page — it does not restart at each file. The
+                app shows the range it will produce, first number to last, before
+                anything is written.
+            </p>
+            <p>
+                You also choose where the number sits: one of six positions on
+                the page, with an offset in points from the edges, plus the font
+                (Helvetica, Times or Courier), the size and the colour. The
+                preview shows the first page of the selected file with the stamp
+                drawn where it will actually land.
+            </p>
+        </section>
+
+        <section>
+            <h3>Why is the number not searchable in some of my files?</h3>
+            <p>
+                Because those originals are encrypted. Normally the number is
+                written into the page content as real text, so Cmd-F finds it. An
+                encrypted PDF does not allow that, so for those files the app
+                falls back to adding the number as a printable annotation
+                instead. The number is visible and it prints, but it is not part
+                of the page text, so a search will not find it.
+            </p>
+            <p>
+                The app never does this quietly. The summary at the end of the
+                batch says how many copies were numbered that way, and the
+                <code>method</code> column of <code>bates_log.csv</code> reads
+                <code>text</code> or <code>annotation</code> for every single
+                file, so a production can be audited from the register.
+            </p>
+        </section>
+
+        <section>
+            <h3>How do I remove the stamps?</h3>
+            <p>
+                Use <strong>Remove Bates Stamps…</strong> in the toolbar, pick the
+                stamped PDFs, then pick a folder for the clean copies. As with
+                stamping, the files you select are never modified — you get
+                copies.
+            </p>
+            <p>
+                For files stamped as text, the stamp is an incremental update
+                appended after the original bytes; removing it truncates back to
+                the original, so the result is byte-for-byte identical to the file
+                you started with. For copies made from encrypted originals, the
+                annotations carrying the BatesStamp marker are removed and the
+                rest of the page is left untouched.
+            </p>
+        </section>
+
+        <section>
+            <h3>Removal refused, saying the file was changed after stamping</h3>
+            <p>
+                That is deliberate. The app knows where the original ended and
+                where its own stamp began. If something has been written to the
+                file since — you annotated it in Preview and saved, or another
+                program rewrote it — then the stamp is no longer the last thing in
+                the file, and truncating back would throw away that later work.
+            </p>
+            <p>
+                So it stops and tells you, leaving the file exactly as it is.
+                Remove the stamps from the file as it was stamped, or start again
+                from the original.
+            </p>
+        </section>
+
+        <section>
+            <h3>Can I continue the numbering from a previous production?</h3>
+            <p>
+                Yes. The app remembers the last number it assigned for each prefix
+                you have used. Pick a recent prefix and it offers
+                <em>Continue from</em> the next number. If you set a starting
+                number that would overlap a production you have already made, it
+                warns you — naming the last number used — and lets you decide.
+            </p>
+        </section>
+
+        <section>
+            <h3>A file shows up red, or yellow, in the list</h3>
+            <p>
+                Red is a file that cannot be stamped, with the reason on the row:
+                unreadable, no pages, or a PDF whose owner forbids changes. The
+                rest of the batch carries on regardless; one bad file never stops
+                a production.
+            </p>
+            <p>
+                Yellow means the file already carries Bates numbers written by
+                this app, and shows the range it already has. It will not be
+                numbered a second time without asking you first.
+            </p>
+        </section>
+
+        <section>
+            <h3>What about password-protected PDFs?</h3>
+            <p>
+                The app asks for the password before the batch starts, one file at
+                a time, and you can skip any of them. Passwords are kept in memory
+                for that run only and are never written anywhere. A skipped file
+                is listed as skipped in the summary; it is not silently left out.
+            </p>
+        </section>
+
+        <section>
+            <h3>Should I check the copies before I serve them?</h3>
+            <p>
+                Yes. Verify the output before serving your production. The app
+                checks its own work — it re-reads the first and last number on
+                every copy it writes, and refuses to hand you a copy that failed
+                that check — but the production is yours to stand behind. Open a
+                few of the copies, search for a number, and read the register
+                against the files in the folder.
+            </p>
+        </section>
+
+        <section>
+            <h3>Do you see any of my documents?</h3>
+            <p>
+                No. The app has no network access at all — see the
+                <a href="privacy.html">privacy policy</a>. Everything happens on
+                your Mac.
+            </p>
+        </section>
+
+    </div>
+
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <p>BatesStamp — <a href="index.html">Product</a> · <a href="privacy.html">Privacy</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

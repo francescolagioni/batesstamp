@@ -1,0 +1,327 @@
+/* BatesStamp — hand-written stylesheet.
+   No framework, no external font, no remote asset of any kind: the site makes
+   the same promise the app does.
+
+   One scale for type, one scale for space, and the icon's own colours used
+   sparingly: navy carries the structure, gold appears only where the eye
+   should stop. */
+
+:root {
+    /* Type: a 1.2 scale off a 17px body, rounded to whole pixels. */
+    --text-xs:   0.8125rem;   /* 13 */
+    --text-sm:   0.9375rem;   /* 15 */
+    --text-base: 1.0625rem;   /* 17 */
+    --text-md:   1.1875rem;   /* 19 */
+    --text-lg:   1.4375rem;   /* 23 */
+
+    /* Space: multiples of 8, so the vertical rhythm never drifts. */
+    --space-1:  0.5rem;
+    --space-2:  1rem;
+    --space-3:  1.5rem;
+    --space-4:  2rem;
+    --space-5:  3rem;
+    --space-6:  4rem;
+    --space-7:  6rem;
+
+    --measure: 65ch;          /* the reading line, never longer */
+    --container: 43rem;
+
+    /* Colour, from the icon. */
+    --navy:      #1f426e;
+    --gold:      #ecb242;
+    --gold-ink:  #8a6212;                  /* gold dark enough to read as text */
+    --gold-soft: rgba(236, 178, 66, 0.55); /* the underline, barely there */
+
+    --bg:      #ffffff;
+    --surface: #fbfcfd;
+    --text:    #131a24;
+    --text-2:  #56636f;
+    --text-3:  #8a95a1;
+    --line:    #e7ebf0;
+    --line-2:  #f0f3f6;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --navy:      #a9c6e8;
+        --gold:      #ecb242;
+        --gold-ink:  #e0a93e;
+        --gold-soft: rgba(236, 178, 66, 0.45);
+
+        --bg:      #0b1017;
+        --surface: #10171f;
+        --text:    #e8edf3;
+        --text-2:  #97a4b2;
+        --text-3:  #69747f;
+        --line:    #1d2732;
+        --line-2:  #161f29;
+    }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+                 Roboto, Helvetica, Arial, sans-serif;
+    font-size: var(--text-base);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Type --- */
+
+h1, h2, h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+                 Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    font-weight: 600;
+    margin: 0;
+    text-wrap: balance;
+}
+
+h1 {
+    font-size: clamp(2rem, 1.35rem + 2.6vw, 2.625rem);
+    line-height: 1.15;
+    letter-spacing: -0.022em;
+}
+
+h2 {
+    font-size: var(--text-lg);
+    line-height: 1.3;
+    letter-spacing: -0.014em;
+    margin-bottom: var(--space-3);
+}
+
+h3 {
+    font-size: var(--text-base);
+    line-height: 1.45;
+    letter-spacing: -0.006em;
+    margin-bottom: var(--space-1);
+}
+
+p { margin: 0 0 var(--space-2); max-width: var(--measure); }
+p:last-child { margin-bottom: 0; }
+
+strong { font-weight: 600; color: var(--text); }
+
+a {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: var(--gold-soft);
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+    transition: color 160ms ease;
+}
+
+a:hover { color: var(--gold-ink); }
+
+a:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.88em;
+    color: var(--navy);
+    background: var(--surface);
+    border: 1px solid var(--line-2);
+    border-radius: 4px;
+    padding: 0.08em 0.34em;
+    white-space: nowrap;
+}
+
+/* --- Frame --- */
+
+.wrap {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--space-3);
+}
+
+.site-header {
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--line-2);
+}
+
+.site-header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: -0.006em;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.brand img { width: 24px; height: 24px; display: block; }
+
+nav { display: flex; gap: var(--space-3); font-size: var(--text-sm); }
+
+nav a {
+    color: var(--text-2);
+    text-decoration: none;
+    transition: color 160ms ease;
+}
+
+nav a:hover, nav a[aria-current="page"] { color: var(--text); }
+
+main { padding: var(--space-7) 0; }
+
+.block + .block { margin-top: var(--space-6); }
+
+.site-footer {
+    border-top: 1px solid var(--line-2);
+    padding: var(--space-4) 0 var(--space-6);
+    color: var(--text-3);
+    font-size: var(--text-sm);
+}
+
+.site-footer a { color: var(--text-2); }
+.site-footer p { max-width: none; }
+
+/* --- Hero --- */
+
+.hero { margin-bottom: var(--space-6); }
+
+.hero .app-icon {
+    width: 96px;
+    height: 96px;
+    display: block;
+    margin-bottom: var(--space-4);
+}
+
+.hero h1 { margin-bottom: var(--space-3); }
+
+.lead {
+    font-size: var(--text-md);
+    line-height: 1.6;
+    color: var(--text-2);
+    max-width: 46ch;
+    margin-bottom: var(--space-4);
+}
+
+.price {
+    font-size: var(--text-sm);
+    color: var(--text-2);
+    display: flex;
+    align-items: baseline;
+    gap: 0.7em;
+}
+
+/* The one place gold does any work on this page. */
+.price::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    background: var(--gold);
+    transform: translateY(-0.3em);
+    flex: none;
+}
+
+/* --- Page intro on the inner pages --- */
+
+.page-head { margin-bottom: var(--space-6); }
+.page-head h1 { margin-bottom: var(--space-3); }
+.page-head .lead { margin-bottom: 0; }
+
+/* --- Placeholders, kept as light as a pencil line --- */
+
+.placeholder {
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    color: var(--text-3);
+    font-size: var(--text-xs);
+    text-align: center;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3);
+}
+
+.placeholder--badge { width: 190px; height: 60px; margin-top: var(--space-4); }
+
+/* --- Gallery: the store panels. One per row, side by side once the page is
+   wide enough that two of them are still worth looking at. It sits outside
+   the reading column, which is why it is its own block in the markup. --- */
+
+.gallery {
+    max-width: 70rem;
+    margin: 0 auto var(--space-7);
+    padding: 0 var(--space-3);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+}
+
+.gallery img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+@media (min-width: 60rem) {
+    .gallery { grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+}
+
+/* --- Features: a grid drawn with hairlines, not with boxes --- */
+
+.features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4) var(--space-5);
+}
+
+.feature { border-top: 1px solid var(--line); padding-top: var(--space-2); }
+.feature p { color: var(--text-2); font-size: var(--text-sm); max-width: 42ch; }
+
+/* --- Facts --- */
+
+.facts { margin: 0; }
+.facts dt { font-weight: 600; margin-top: var(--space-2); }
+.facts dt:first-of-type { margin-top: 0; }
+.facts dd { margin: 0; color: var(--text-2); max-width: var(--measure); }
+
+/* --- FAQ --- */
+
+.faq { border-top: 1px solid var(--line); }
+.faq section { border-bottom: 1px solid var(--line); padding: var(--space-3) 0; }
+.faq h3 { margin-bottom: var(--space-1); }
+.faq p { color: var(--text-2); font-size: var(--text-sm); }
+.faq p + p { margin-top: var(--space-2); }
+
+/* --- Contact --- */
+
+.contact { margin-bottom: var(--space-5); }
+.contact .email { font-size: var(--text-md); display: inline-block; margin-bottom: var(--space-2); }
+.contact p { color: var(--text-2); font-size: var(--text-sm); }
+
+.note { color: var(--text-3); font-size: var(--text-sm); margin-top: var(--space-5); }
+
+/* --- Narrow --- */
+
+@media (max-width: 640px) {
+    :root { --space-7: 4rem; --space-6: 3rem; }
+    body { font-size: 1rem; }
+    .features { grid-template-columns: 1fr; gap: var(--space-3); }
+    .hero .app-icon { width: 80px; height: 80px; }
+    nav { gap: var(--space-2); }
+}

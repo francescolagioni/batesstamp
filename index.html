@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BatesStamp — Bates numbering for Mac</title>
+<meta name="description" content="Native macOS app that applies Bates numbering to batches of PDFs. Searchable numbers, fully offline, one-time purchase.">
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="wrap">
+        <a class="brand" href="index.html"><img src="icon.png" alt="">BatesStamp</a>
+        <nav>
+            <a href="index.html" aria-current="page">Product</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <div class="wrap">
+
+    <div class="hero">
+        <img class="app-icon" src="icon.png" alt="The BatesStamp app icon" width="256" height="256">
+        <h1>Bates numbering for Mac</h1>
+        <p class="lead">
+            Number a production of hundreds of PDFs in one pass. The numbers are
+            real, searchable text. Your originals are never touched, and nothing
+            ever leaves your Mac.
+        </p>
+        <p class="price"><span><strong>$39.99</strong> — one-time purchase, no subscription</span></p>
+
+        <!-- Mac App Store badge: download the official artwork from Apple's
+             marketing resources and replace this block with the image and a
+             link to the app's App Store page. Keep the file local. -->
+        <div class="placeholder placeholder--badge">Mac App Store badge</div>
+    </div>
+
+    </div>
+
+    <div class="gallery">
+        <img src="images/1-batch-and-preview.png" width="1440" height="900" loading="lazy"
+             alt="A batch of three PDFs loaded in BatesStamp, the live preview showing SMITH-000010 stamped on the first page of a deposition.">
+        <img src="images/2-numbering-panel.png" width="1440" height="900" loading="lazy"
+             alt="The numbering settings: prefix SMITH-, six digits, and the range SMITH-000030 to SMITH-000058 the batch will produce.">
+        <img src="images/3-batch-summary.png" width="1440" height="900" loading="lazy"
+             alt="The end-of-batch summary: three files stamped, 29 pages numbered, SMITH-000001 to SMITH-000029, register bates_log.csv.">
+        <img src="images/4-search-the-number.png" width="1440" height="900" loading="lazy"
+             alt="A stamped PDF open in Preview, where a search for SMITH- finds the number on all fourteen pages.">
+    </div>
+
+    <div class="wrap">
+
+    <section class="block">
+        <h2>What it does</h2>
+        <p>
+            BatesStamp puts a sequential Bates number on every page of every PDF
+            in a batch. You set the prefix, the suffix, the number of digits and
+            the starting number; the numbering then runs continuously through the
+            list, one number per page, across every file — <code>ACME-000001</code>
+            on the first page through <code>ACME-004812</code> on the last.
+        </p>
+        <p>
+            Drag in files or whole folders, put them in the order the production
+            needs, choose where the copies go, and press Stamp. When the batch
+            finishes, the output folder opens in the Finder with a register of
+            exactly what was produced.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Why this one</h2>
+        <div class="features">
+
+            <div class="feature">
+                <h3>The numbers are real text</h3>
+                <p>
+                    Each number is written into the page content with a standard
+                    PDF font, so it is selectable, printable, and found by Cmd-F
+                    in Preview, Acrobat, or anything else. The page is never
+                    rasterized.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Fully offline, verifiably</h3>
+                <p>
+                    The app is sandboxed and ships without the network
+                    entitlement: it cannot make a network request even if it
+                    wanted to. No accounts, no analytics, no telemetry.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Originals are never modified</h3>
+                <p>
+                    Stamping always writes copies into a folder you choose. The
+                    files you dragged in are read and left exactly as they were.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>A register you can rely on</h3>
+                <p>
+                    Every batch writes <code>bates_log.csv</code> beside the
+                    copies: file names, first and last number, page count, and
+                    the SHA-256 of each file produced. A production can be
+                    verified without opening a single PDF.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Removal gives the original back</h3>
+                <p>
+                    The stamp is an incremental update appended to the original
+                    bytes. Remove it and the file returns byte-for-byte
+                    identical. If somebody else wrote to the file after
+                    stamping, removal refuses rather than guess.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Numbering that continues</h3>
+                <p>
+                    The app remembers the last number used for each prefix and
+                    offers to continue from it. Start below a number you have
+                    already produced and it warns you first.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="block">
+        <h2>Requirements</h2>
+        <dl class="facts">
+            <dt>macOS 14 or later</dt>
+            <dd>Apple silicon and Intel.</dd>
+            <dt>No internet connection</dt>
+            <dd>Not to install, not to use, not to license.</dd>
+        </dl>
+    </section>
+
+    </div>
+
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <p>BatesStamp — <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
