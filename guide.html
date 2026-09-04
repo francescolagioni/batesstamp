@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Bates number PDFs on a Mac (without Acrobat) — BatesStamp</title>
+<meta name="description" content="What a Bates number has to do, why the usual Mac options fall short, and how to run a production without a subscription or an upload.">
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="wrap">
+        <a class="brand" href="index.html"><img src="icon.png" alt="">BatesStamp</a>
+        <nav>
+            <a href="index.html">Product</a>
+            <a href="guide.html" aria-current="page">Guide</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+
+    <div class="page-head">
+        <h1>How to Bates number PDFs on a Mac (without Acrobat)</h1>
+        <p class="lead">
+            Every page in a document production needs its own permanent label —
+            <code>ACME-000001</code>, <code>ACME-000002</code> — so that eight
+            months later, in a deposition or a summary judgment brief,
+            "ACME-004812" means one page and one page only, to everyone in the
+            case.
+        </p>
+    </div>
+
+    <section class="block">
+        <p>
+            That is Bates numbering, and until recently doing it on a Mac meant
+            either an Adobe subscription or uploading your client's documents to
+            somebody else's server. This is what the numbering actually has to
+            do, why the usual Mac options fall short, and how to run a
+            production without either compromise.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>What a Bates number is, exactly</h2>
+        <p>
+            The name comes from the Bates Automatic Numbering Machine, a
+            self-advancing hand stamp sold by the Bates Manufacturing Company
+            from the 1890s onward. You pressed it on a page, it printed a
+            number, and it moved its own counter forward. Firms stamped exhibits
+            with those machines for the better part of a century. The machine is
+            gone. The convention it created is still how litigation refers to
+            paper.
+        </p>
+        <p>
+            What separates a Bates number from a page number is worth stating
+            precisely, because this is the part software gets wrong:
+        </p>
+        <ul>
+            <li>
+                <strong>It runs continuously across files.</strong> Page 1 of
+                the second PDF is not "1". If the first document ended at
+                000014, the second one starts at 000015.
+            </li>
+            <li>
+                <strong>It never restarts.</strong> Not per file, not per
+                volume, not per custodian.
+            </li>
+            <li>
+                <strong>It is unique across the whole matter,</strong> not just
+                this batch. Starting a second production at 1 is how two
+                different pages end up carrying the same label — and how a
+                deposition stops while everyone works out which one the witness
+                is holding.
+            </li>
+            <li>
+                <strong>It is fixed width.</strong> <code>ACME-000007</code> and
+                <code>ACME-000008</code> sort next to each other in any file
+                listing. <code>ACME-7</code> and <code>ACME-8</code> stop
+                sorting correctly the moment you reach <code>ACME-10</code>.
+            </li>
+            <li>
+                <strong>It is written down.</strong> Somewhere there is a list
+                of what you produced, which numbers each file carried, and when.
+            </li>
+        </ul>
+        <p>
+            A footer reading "Page 3 of 12" satisfies none of that. Neither does
+            a number that restarts at the top of every file, which is what "add
+            page numbers" gives you in most software.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>The four ways Mac users have done this</h2>
+
+        <h3>Adobe Acrobat Pro</h3>
+        <p>
+            Acrobat has done Bates numbering properly for years, including
+            continuation across a batch. The catch is not the feature, it is the
+            shape of the purchase: it is a subscription, a couple of hundred
+            dollars a year, renewing forever. For a firm that runs three
+            productions a year, that is hundreds of dollars annually for a
+            feature used on a handful of afternoons — and the numbering restarts
+            at 1 for every batch unless you remember what you ended on last time
+            and type it back in yourself.
+        </p>
+
+        <h3>A general-purpose PDF editor</h3>
+        <p>
+            The Mac has several good ones, and they are genuinely better than
+            Acrobat at most day-to-day work. But "add a header and footer" is
+            not Bates numbering. The counter belongs to the document, so it
+            restarts at the top of every file, and stitching fifty files into
+            one continuous sequence means doing the arithmetic by hand, file by
+            file, and hoping you did not misplace a page.
+        </p>
+
+        <h3>Preview</h3>
+        <p>
+            Preview cannot do it at all. There is no Bates function, and the
+            Automator and Quartz filter workarounds people pass around handle
+            one document at a time, with no counter that survives between them.
+        </p>
+
+        <h3>A website</h3>
+        <p>
+            There are free pages and paid browser tools that will stamp a PDF
+            well enough. The problem is not the output. The problem is that you
+            just uploaded privileged client documents to a server you do not
+            control, run by a company you have not diligenced, with a retention
+            policy you have not read. ABA Model Rule 1.6(c) asks lawyers to make
+            reasonable efforts against the inadvertent or unauthorized
+            disclosure of client information, and Comment 8 to Rule 1.1 puts the
+            risks of technology inside the duty of competence. Whether a given
+            upload clears that bar is the lawyer's judgment call — but it is a
+            call you have to make every time, and the easy way to get it right
+            is to never make the upload.
+        </p>
+        <p>
+            There is a fifth option, for the technically inclined: a shell
+            script around <code>pdftk</code> or Ghostscript. It works. It also
+            means debugging a script at eleven at night before a production is
+            due, and it produces no record of what it did.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>What actually matters, and is easy to miss</h2>
+
+        <h3>The number has to be real text</h3>
+        <p>
+            Some tools flatten each page into an image with the number painted
+            on. The number is visible and it prints, so it looks fine — right up
+            to the moment opposing counsel searches the production for
+            ACME-004812 and finds nothing, or a paralegal cannot select a
+            citation to copy. A number written as text in the page content is
+            selectable, printable, and found by Cmd-F in any viewer. A number
+            burned into a raster image is none of those, and there is no undoing
+            it later.
+        </p>
+
+        <h3>The originals must survive</h3>
+        <p>
+            Stamping should produce copies. If the tool writes over the files
+            you fed it, one wrong prefix costs you the source documents.
+        </p>
+
+        <h3>The numbering has to continue</h3>
+        <p>
+            The second production in a matter starts where the first one ended.
+            Software that cannot remember what it already used pushes that job
+            onto whoever is running the batch, at exactly the moment they are
+            least able to double-check it.
+        </p>
+
+        <h3>Somebody has to be able to audit it</h3>
+        <p>
+            When a dispute arises about what was produced, the answer should be
+            a file you can open, not a reconstruction from memory.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Doing it with BatesStamp</h2>
+        <p>
+            BatesStamp is a small macOS app that does this one job. Here is a
+            whole production, start to finish:
+        </p>
+        <ol>
+            <li>
+                <strong>Drag the documents onto the window.</strong> Files or
+                entire folders — folders are read recursively. Each row shows
+                the file name and its page count, with the totals along the
+                bottom. Drag rows to set the order the production needs, or sort
+                by name or date.
+            </li>
+            <li>
+                <strong>Set the numbering.</strong> A prefix, an optional
+                suffix, the number of digits, and the starting number. A label
+                under the fields updates as you type with the exact range the
+                batch will produce — <code>SMITH-000001</code> to
+                <code>SMITH-004812</code> — so you see the last number before
+                you commit to the first.
+            </li>
+            <li>
+                <strong>Place the stamp.</strong> Six positions on the page, an
+                offset in points, one of the standard PDF fonts, a size and a
+                color. The preview draws the stamp on the first page of the
+                selected file, in the place it will actually land.
+            </li>
+            <li>
+                <strong>Press Stamp and choose an output folder.</strong> The
+                batch runs in the background with a progress bar and a working
+                Cancel. Your originals are read and left alone; every stamped
+                file is a new copy in the folder you chose.
+            </li>
+            <li>
+                <strong>Read the register.</strong> When the batch finishes, the
+                folder opens in the Finder with <code>bates_log.csv</code>
+                sitting beside the copies: original file, output file, first and
+                last number, page count, the SHA-256 of each file produced, and
+                the method used. A production can be checked from that one file
+                without opening a single PDF.
+            </li>
+        </ol>
+        <p>
+            The next time you use the same prefix, the app offers to continue
+            from where you left off. Set a starting number that would overlap
+            something you have already served and it says so, naming the last
+            number it used, before anything is written.
+        </p>
+        <p>
+            If you need to undo a stamping, <strong>Remove Bates Stamps…</strong>
+            takes the stamped copies and gives back clean ones. The stamp is
+            appended after the original bytes rather than mixed into them, so
+            removing it returns a file that is identical to the original byte for
+            byte. If somebody else edited the file after it was stamped, removal
+            refuses and says why, rather than throwing away their work.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>The part about the network</h2>
+        <p>
+            The app is sandboxed and ships without the network entitlement. That
+            is not a promise in a <a href="privacy.html">privacy policy</a> — it
+            is a property of the application that macOS enforces. There is no
+            account, no login, no license server, no analytics. Your documents
+            cannot leave your Mac, because the app has no way to send them
+            anywhere.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Before you serve it</h2>
+        <p>
+            Verify the output before serving your production. The app checks its
+            own work — it re-reads the first and last number on every copy it
+            writes, and refuses to hand you a file that failed the check — but
+            the production is yours to stand behind. Open a few copies, search
+            for a number, and read the register against the files in the folder.
+            It takes two minutes and it is the two minutes that matter.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Where to get it</h2>
+        <p>
+            BatesStamp requires macOS 14 or later, runs on Apple silicon and
+            Intel, and is a one-time purchase — there is no subscription and
+            there never will be.
+        </p>
+
+        <!-- Once the app is on sale, replace this line with a link to the Mac
+             App Store page, or with Apple's official badge. Keep the artwork
+             local. The article's Markdown source, in marketing/launch/, carries
+             a [STORE LINK] placeholder in the same place. -->
+        <p class="coming">Coming to the Mac App Store</p>
+
+        <p class="note">
+            This describes how document numbering software works; it is not
+            legal advice. The rules named above are summarized — read the ones
+            that apply where you practice.
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <p>BatesStamp — <a href="index.html">Product</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a></p>
+    </div>
+</footer>
+
+</body>
+</html>
