@@ -208,6 +208,12 @@ main { padding: var(--space-7) 0; }
 .site-footer a { color: var(--text-2); }
 .site-footer p { max-width: none; }
 
+.site-footer .publisher {
+    margin-top: var(--space-3);
+    color: var(--text-3);
+    line-height: 1.6;
+}
+
 /* --- Hero --- */
 
 .hero { margin-bottom: var(--space-6); }
