@@ -3,9 +3,10 @@
    the same promise the app does.
 
    The page is set the way a well-made document is set: a serif for the
-   headings, a sans for the text, a warm paper rather than a screen white, and
-   one colour — the navy from the app's icon — carrying every piece of
-   structure. Gold is kept back for one job only: the focus ring. */
+   headings, a sans for the text, and one colour — the navy from the app's icon
+   — carrying every piece of structure. Light reads off a warm paper, dark off
+   a night blue mixed down from that same navy; neither is a flat white or a
+   flat black. Gold is kept back for one job only: the focus ring. */
 
 :root {
     --font-serif: Charter, "Bitstream Charter", "Iowan Old Style",
@@ -55,35 +56,58 @@
     --shadow-1: rgba(18, 22, 26, 0.07);
     --shadow-2: rgba(18, 22, 26, 0.10);
     --edge:     rgba(18, 22, 26, 0.22);
+
+    --hero-bg:   var(--surface);
+    --page-wash: none;
 }
+
+/* Dark: a night blue mixed down from the icon's navy, never a flat black. The
+   surfaces sit a step lighter than the page and are drawn with a low-opacity
+   hairline rather than a shadow, which on a dark ground reads as dirt. Every
+   text colour below clears WCAG AA against the page, against the surfaces and
+   against the brightest point of the hero wash. */
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg:       #15181c;
-        --surface:  #1c2026;
-        --line:     #2c323a;
-        --line-soft:#242931;
+        --bg:       #0e1524;
+        --surface:  #162034;
+        --line:     rgba(154, 184, 228, 0.18);
+        --line-soft:rgba(154, 184, 228, 0.11);
 
-        --ink:      #f1eee8;
-        --text:     #e2e0da;
-        --text-2:   #a6adb5;
-        --text-3:   #838c95;
+        --ink:      #f2f0ec;
+        --text:     #e8e6e1;   /* 14.6:1 — warm, not white */
+        --text-2:   #a8b2c4;   /*  8.5:1 */
+        --text-3:   #97a3b8;   /*  7.2:1 */
 
-        --navy:     #9cbde3;
-        --navy-2:   #bcd4ef;
-        --navy-soft:rgba(156, 189, 227, 0.36);
+        --navy:     #8fb6ee;   /*  8.8:1 — the icon's blue, opened up */
+        --navy-2:   #b0cdf5;
+        --navy-soft:rgba(143, 182, 238, 0.42);
 
         --gold:     #e7b54b;
 
-        --shadow-1: rgba(0, 0, 0, 0.36);
-        --shadow-2: rgba(0, 0, 0, 0.44);
-        --edge:     rgba(0, 0, 0, 0.55);
+        --shadow-1: rgba(0, 0, 0, 0.30);
+        --shadow-2: rgba(0, 0, 0, 0.38);
+        --edge:     rgba(186, 208, 240, 0.26);
+
+        /* No band behind the top of the home page here — a wash laid over the
+           page itself instead, so it runs behind the masthead too and has no
+           edge anywhere. At full strength it lands on #1b2d4c, the icon.s own
+           navy, and it is gone within 500px of the top of the page: well above
+           the first paragraph of running text. */
+        --hero-bg:   transparent;
+        --page-wash:
+            radial-gradient(75% 500px at 24% 0%,
+                rgba(43, 74, 125, 0.45) 0%,
+                rgba(43, 74, 125, 0) 72%);
     }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+    -webkit-text-size-adjust: 100%;
+    background: var(--bg);
+}
 
 body {
     margin: 0;
@@ -94,6 +118,15 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* The home page carries the wash; every other page is flat. It is laid on the
+   page rather than on the hero so that it runs behind the masthead as well and
+   has no edge for the eye to catch. */
+
+body.home {
+    background-image: var(--page-wash);
+    background-repeat: no-repeat;
 }
 
 /* --- Type --- */
@@ -197,7 +230,6 @@ code {
 .site-header {
     padding: var(--space-3) 0;
     border-bottom: 1px solid var(--line);
-    background: var(--bg);
 }
 
 .site-header .wrap-wide {
@@ -270,7 +302,7 @@ main.home { padding-top: 0; }
    and shows the application itself. Nothing is held back for later. --- */
 
 .hero {
-    background: var(--surface);
+    background: var(--hero-bg);
     border-bottom: 1px solid var(--line);
     padding: var(--space-6) 0;
 }
