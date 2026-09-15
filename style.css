@@ -259,11 +259,28 @@ main { padding: var(--space-7) 0; }
 .page-head h1 { margin-bottom: var(--space-3); }
 .page-head .lead { margin-bottom: 0; }
 
-/* The line that stands where the Mac App Store badge will go. Quiet on
-   purpose: it is a promise, not a button, and there is nothing to click yet. */
+/* The Mac App Store badge. Apple's artwork, served from this site rather than
+   hotlinked, black on light and white on dark as their guidelines require. The
+   availability line below it is the plain truth about where it is on sale. */
 
-.coming {
+.store {
     margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+}
+
+.store-badge {
+    display: inline-block;
+    border: 0;
+    text-decoration: none;
+}
+
+.store-badge img {
+    display: block;
+    width: 180px;
+    height: auto;
+}
+
+.availability {
     font-size: var(--text-sm);
     color: var(--text-2);
 }
