@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bates Numbering Multiple PDFs Without Restarting at 1</title>
+<meta name="description" content="When a production spans several files, the Bates sequence must run straight through them. Why most tools restart at 1, and how to check before you produce.">
+<link rel="canonical" href="https://francescolagioni.github.io/batesstamp/bates-numbering-multiple-files.html">
+<meta name="google-site-verification" content="0Fkn_wu-noSVgcpJXr1SHPMTS2Ft7W7g7rR6c6q0I0M" />
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="wrap-wide">
+        <a class="brand" href="index.html"><img src="icon.png" alt="">BatesStamp</a>
+        <nav>
+            <a href="index.html">Product</a>
+            <a href="guide.html">Guide</a>
+            <a href="what-is-a-bates-number.html">Basics</a>
+            <a href="how-to-bates-number-pdf-mac.html">Mac options</a>
+            <a href="bates-numbering-multiple-files.html" aria-current="page">Multiple files</a>
+            <a href="compare.html">Compare</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+
+    <div class="page-head">
+        <h1>Bates numbering multiple PDFs without restarting at 1</h1>
+        <p class="lead">
+            A production is rarely one file. When it spans several, the Bates
+            sequence has to run straight through all of them — and this is where
+            most tools quietly fail.
+        </p>
+    </div>
+
+    <section class="block">
+        <h2>What correct looks like</h2>
+        <p>
+            Three files, 412 pages between them, prefix <code>ACME</code>, six
+            digits:
+        </p>
+
+        <div class="table-scroll">
+            <table class="compare">
+                <thead>
+                    <tr>
+                        <th scope="col">File</th>
+                        <th scope="col" class="num">Pages</th>
+                        <th scope="col">Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">contract-2021.pdf</th>
+                        <td class="num">146</td>
+                        <td><code>ACME000001</code> – <code>ACME000146</code></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">correspondence.pdf</th>
+                        <td class="num">188</td>
+                        <td><code>ACME000147</code> – <code>ACME000334</code></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">invoices.pdf</th>
+                        <td class="num">78</td>
+                        <td><code>ACME000335</code> – <code>ACME000412</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            Every number appears once. Cite <code>ACME000200</code> in a
+            deposition and there is exactly one page it can be.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>What most tools do instead</h2>
+
+        <div class="table-scroll">
+            <table class="compare">
+                <thead>
+                    <tr>
+                        <th scope="col">File</th>
+                        <th scope="col" class="num">Pages</th>
+                        <th scope="col">Range produced</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">contract-2021.pdf</th>
+                        <td class="num">146</td>
+                        <td><code>ACME000001</code> – <code>ACME000146</code></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">correspondence.pdf</th>
+                        <td class="num">188</td>
+                        <td><code>ACME000001</code> – <code>ACME000188</code></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">invoices.pdf</th>
+                        <td class="num">78</td>
+                        <td><code>ACME000001</code> – <code>ACME000078</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            Now there are three pages called <code>ACME000001</code>, three
+            called <code>ACME000002</code>, and so on. The identifier identifies
+            nothing. A request for <code>ACME000050</code> has three possible
+            answers, and neither side can tell which one is meant.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Why it happens</h2>
+        <p>It is not carelessness — it is how the tools are built.</p>
+        <p>
+            Most PDF utilities process one file at a time. Point them at a folder
+            and they do the same thing to each file independently. Applied to
+            numbering, that means every file gets its own sequence, because the
+            tool has no idea the other files exist. On macOS this is true of
+            Quartz filters, of most Automator workflows, and of nearly every free
+            single-file numbering app.
+        </p>
+        <p>
+            Numbering a production correctly requires something different: the
+            tool has to count the pages of every file <em>before</em> stamping
+            anything, then carry a running total from one file to the next. That
+            is a small amount of extra logic and a very large difference in
+            outcome.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>The manual workaround, and why it fails</h2>
+        <p>
+            You can do it by hand: number file one from 1, note that it ended at
+            146, number file two starting from 147, and so on.
+        </p>
+        <p>
+            It works when nothing changes. In practice something always changes.
+            A document gets pulled the day before the deadline. A file turns out
+            to have two extra pages. Someone re-runs one file to fix a stamp
+            position. Each of those means recalculating every starting number
+            after it, by hand, under time pressure. The arithmetic is trivial and
+            the error rate is not — and the error is invisible until someone
+            cites a page that turns out to be two different pages.
+        </p>
+        <p>
+            <strong>The test, in two minutes:</strong> take three PDFs, number
+            them, and open the second one. If its first page reads
+            <code>ACME000001</code>, the tool restarts per file and cannot be
+            used for productions.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>When restarting is actually correct</h2>
+        <p>
+            There is one case where per-file numbering is what you want: when
+            each file is a separate exhibit with its own identifier, and the
+            numbering is internal to that exhibit. Then <code>EX12-001</code>,
+            <code>EX12-002</code> and so on is right, and the exhibit prefix
+            carries the uniqueness.
+        </p>
+        <p>
+            The distinction is whether uniqueness lives in the number or in the
+            prefix. In a document production it lives in the number, so the
+            sequence must be continuous. Check which situation you are in before
+            you start, because changing your mind afterwards means re-producing.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Continuing across productions, not just across files</h2>
+        <p>
+            The same problem appears one level up. Your first production ends at
+            <code>ACME000412</code>. Six weeks later there is a supplemental
+            production. It must begin at <code>ACME000413</code> — never at 1,
+            and never at a round number you guessed.
+        </p>
+        <p>
+            This is why a production register matters. It records, for each
+            production, the date, the prefix, the range used, the files and their
+            page counts. Without it you are reconstructing the last number used
+            from memory or by opening old files, and overlapping two productions
+            is a problem with no clean fix: the documents are already out.
+        </p>
+
+        <h3>What a register should hold</h3>
+        <ul>
+            <li>Date of the production</li>
+            <li>Prefix, digit width, first and last number used</li>
+            <li>Every file name, in order, with its page count and its range</li>
+            <li>Where the output was written</li>
+            <li>
+                Optionally, a hash of each output file — a fingerprint that
+                changes if the file changes, which lets you demonstrate later
+                that a produced document is the one you produced
+            </li>
+        </ul>
+    </section>
+
+    <section class="block">
+        <h2>A checklist before you produce</h2>
+        <ol>
+            <li>Files are in the folder, named and ordered as they should be numbered.</li>
+            <li>Redaction is done. Numbering comes after, always.</li>
+            <li>Prefix and digit width match the rest of the matter.</li>
+            <li>
+                Starting number continues from the last one used, checked against
+                the register rather than remembered.
+            </li>
+            <li>You can see the resulting range before committing — and it looks right.</li>
+            <li>Output goes to a new folder; originals untouched.</li>
+            <li>
+                After the run: check the first page of the first file, the last
+                page of the last file, and the first page of each file in
+                between. That last check is the one that catches a restart.
+            </li>
+        </ol>
+    </section>
+
+    <section class="block">
+        <h2>Related</h2>
+        <p>
+            <a href="what-is-a-bates-number.html">What is a Bates number?</a> —
+            format, conventions, common mistakes.<br>
+            <a href="how-to-bates-number-pdf-mac.html">How to Bates number a PDF
+            on a Mac</a> — every option compared.<br>
+            <a href="compare.html">What Bates numbering on a Mac actually
+            costs</a> — over three years.
+        </p>
+        <p>
+            <a href="index.html">Bates Stamp</a> numbers continuously across an
+            entire production and writes a CSV register with ranges, page counts
+            and a hash of every output. Entirely on your Mac — no account, no
+            upload.
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="wrap-wide">
+        <p>BatesStamp — <a href="index.html">Product</a> · <a href="guide.html">Guide</a> · <a href="compare.html">Compare</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a></p>
+        <p class="publisher">
+            BatesStamp is published by LGN Service di Corrado Lagioni<br>
+            Via Mabellini 19, 25015 Desenzano del Garda (BS), Italy<br>
+            Contact: <a href="mailto:batesstamp.support@gmail.com">batesstamp.support@gmail.com</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

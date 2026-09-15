@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Is a Bates Number? A Plain Explanation for Legal Documents</title>
+<meta name="description" content="A Bates number uniquely identifies every page of a production, so any page can be cited exactly. How the format works, and the mistakes that cause trouble.">
+<link rel="canonical" href="https://francescolagioni.github.io/batesstamp/what-is-a-bates-number.html">
+<meta name="google-site-verification" content="0Fkn_wu-noSVgcpJXr1SHPMTS2Ft7W7g7rR6c6q0I0M" />
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="wrap-wide">
+        <a class="brand" href="index.html"><img src="icon.png" alt="">BatesStamp</a>
+        <nav>
+            <a href="index.html">Product</a>
+            <a href="guide.html">Guide</a>
+            <a href="what-is-a-bates-number.html" aria-current="page">Basics</a>
+            <a href="how-to-bates-number-pdf-mac.html">Mac options</a>
+            <a href="bates-numbering-multiple-files.html">Multiple files</a>
+            <a href="compare.html">Compare</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+
+    <div class="page-head">
+        <h1>What is a Bates number?</h1>
+        <p class="lead">
+            A Bates number is a unique identifier printed on every page of a
+            document production, so that any single page can be referred to
+            exactly, by anyone, for as long as the matter lasts.
+        </p>
+    </div>
+
+    <section class="block">
+        <p>
+            If two lawyers on opposite sides of a case need to discuss one page
+            out of forty thousand, they need a way to name that page that cannot
+            be misread. Page numbers inside the original files do not work:
+            three different documents will each have a page 7. Bates numbering
+            solves this by giving every page in the entire production one number
+            that appears nowhere else.
+        </p>
+        <p>
+            The name comes from the Bates Automatic Numbering Machine, a hand
+            stamp with rotating wheels patented in the 1890s. It advanced by one
+            each time it struck a page. The machine is long gone; the practice
+            and the name stayed.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>What a Bates number looks like</h2>
+        <p>
+            Almost every Bates number has two parts: a prefix that identifies who
+            produced the documents, and a sequential number padded with leading
+            zeros.
+        </p>
+
+        <div class="table-scroll">
+            <table class="compare">
+                <thead>
+                    <tr>
+                        <th scope="col">Example</th>
+                        <th scope="col">Reading</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row"><code>ACME000001</code></th>
+                        <td>First page produced by Acme, six digits</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><code>SMITH-00042</code></th>
+                        <td>Forty-second page, prefix separated by a hyphen</td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><code>DEF0001234</code></th>
+                        <td>Defendant's production, page 1234</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>
+            The leading zeros are not decoration. They keep every identifier the
+            same width, which means the numbers sort correctly in a file browser
+            or a spreadsheet. Without padding, <code>ACME2</code> sorts after
+            <code>ACME10</code>, and a production that sorts wrong is a
+            production that is hard to work with.
+        </p>
+        <p>
+            How many digits you choose sets a ceiling. Six digits gives you
+            999,999 pages, which is comfortable for almost anything. Four digits
+            gives you 9,999, and the day you exceed it you have a problem with no
+            clean solution, because the numbers you already produced cannot be
+            changed.
+        </p>
+
+        <h3>Where the number is placed</h3>
+        <p>
+            Convention puts the Bates number in the bottom-right corner of the
+            page, outside the body text. The corner matters less than the
+            consistency: it must be in the same position on every page, and it
+            must not cover anything that was already there.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Why the number must be unique across the whole production</h2>
+        <p>This is the part that causes the most trouble in practice.</p>
+        <p>
+            A production is usually not one file. It is a folder of files —
+            thirty PDFs, say, adding up to four hundred pages. The Bates sequence
+            must run straight through all of them: the first page of the first
+            file is <code>ACME000001</code>, and the last page of the last file
+            is <code>ACME000400</code>. It does not restart at 1 when a new file
+            begins.
+        </p>
+        <p>
+            If it does restart, you now have thirty pages numbered
+            <code>ACME000001</code>, and the identifier no longer identifies
+            anything. Citing "ACME000001" in a deposition becomes meaningless.
+            This is the single most common failure when people number documents
+            with a tool that only handles one file at a time.
+        </p>
+        <p>
+            <strong>The rule in one line:</strong> one number, one page, for the
+            entire matter — not for the file.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>What it is not</h2>
+
+        <h3>Not page numbering</h3>
+        <p>
+            Page numbering tells you where you are inside a document. Bates
+            numbering tells you which page of the production you are holding. A
+            brief can have both, and they will not match.
+        </p>
+
+        <h3>Not redaction</h3>
+        <p>
+            Numbering and redaction are separate steps, and the order matters:
+            you redact first, then number, so the numbers appear on the version
+            that actually goes out.
+        </p>
+
+        <h3>Not a confidentiality designation</h3>
+        <p>
+            Stamps such as <em>CONFIDENTIAL</em> or <em>ATTORNEYS' EYES ONLY</em>
+            are often applied alongside Bates numbers and are sometimes handled
+            by the same tool, but they are a different thing with different
+            rules, usually set by a protective order.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Keeping a record of what you produced</h2>
+        <p>
+            Producing documents is not only about stamping them. Months later you
+            may need to answer a precise question: which pages went out in the
+            March production, and were they the same files you have on disk now?
+        </p>
+        <p>
+            A production register answers that. At minimum it records, for each
+            production: the date, the prefix, the range of numbers used, the file
+            names, and the page count of each file. Some tools also record a hash
+            of every output file — a short fingerprint that changes if even one
+            byte of the file changes. If a dispute arises about whether a
+            document was altered after production, that fingerprint is the
+            difference between demonstrating something and asserting it.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Common mistakes</h2>
+        <ul>
+            <li>
+                <strong>Restarting the sequence on each file.</strong> Destroys
+                uniqueness. The most frequent and most damaging error.
+            </li>
+            <li>
+                <strong>Reusing a range across two productions.</strong> Always
+                continue from the last number used, never start over.
+            </li>
+            <li>
+                <strong>Too few digits.</strong> Pick the ceiling before you
+                start, not when you hit it.
+            </li>
+            <li>
+                <strong>Numbering the originals instead of copies.</strong> Stamp
+                copies and keep the originals untouched, so a mistake costs you a
+                re-run rather than the source material.
+            </li>
+            <li>
+                <strong>Stamping over content.</strong> Check a few pages of
+                every production, especially documents with unusual margins or
+                landscape pages.
+            </li>
+            <li>
+                <strong>No record of what was produced.</strong> Reconstructing
+                it later from memory is unreliable and sometimes impossible.
+            </li>
+        </ul>
+    </section>
+
+    <section class="block">
+        <h2>Doing it on a Mac</h2>
+        <p>
+            The practice is the same on any platform, but the tools are not.
+            macOS has no built-in Bates numbering, and many of the free options
+            handle one file at a time — which, as above, is exactly the case
+            where numbering goes wrong.
+        </p>
+        <p>
+            We wrote a separate page on the practical side:
+            <a href="how-to-bates-number-pdf-mac.html">how to Bates number a PDF
+            on a Mac</a>, and one on
+            <a href="bates-numbering-multiple-files.html">numbering across
+            multiple files without restarting</a>.
+        </p>
+        <p>
+            <a href="index.html">Bates Stamp</a> is a macOS app that numbers a
+            whole production in one pass and keeps a register of it. It runs
+            entirely on your Mac — no account, no upload.
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="wrap-wide">
+        <p>BatesStamp — <a href="index.html">Product</a> · <a href="guide.html">Guide</a> · <a href="compare.html">Compare</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a></p>
+        <p class="publisher">
+            BatesStamp is published by LGN Service di Corrado Lagioni<br>
+            Via Mabellini 19, 25015 Desenzano del Garda (BS), Italy<br>
+            Contact: <a href="mailto:batesstamp.support@gmail.com">batesstamp.support@gmail.com</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

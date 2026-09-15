@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Bates Number a PDF on a Mac (Every Option, Honestly Compared)</title>
+<meta name="description" content="macOS has no built-in Bates numbering. What Preview, Automator, the command line and dedicated apps can and cannot do — and how to choose between them.">
+<link rel="canonical" href="https://francescolagioni.github.io/batesstamp/how-to-bates-number-pdf-mac.html">
+<meta name="google-site-verification" content="0Fkn_wu-noSVgcpJXr1SHPMTS2Ft7W7g7rR6c6q0I0M" />
+<link rel="icon" href="icon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="wrap-wide">
+        <a class="brand" href="index.html"><img src="icon.png" alt="">BatesStamp</a>
+        <nav>
+            <a href="index.html">Product</a>
+            <a href="guide.html">Guide</a>
+            <a href="what-is-a-bates-number.html">Basics</a>
+            <a href="how-to-bates-number-pdf-mac.html" aria-current="page">Mac options</a>
+            <a href="bates-numbering-multiple-files.html">Multiple files</a>
+            <a href="compare.html">Compare</a>
+            <a href="support.html">Support</a>
+            <a href="privacy.html">Privacy</a>
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+
+    <div class="page-head">
+        <h1>How to Bates number a PDF on a Mac</h1>
+        <p class="lead">
+            macOS has no built-in Bates numbering. Here is every option that
+            actually exists, what each one can and cannot do, and how to choose
+            without finding out the hard way.
+        </p>
+    </div>
+
+    <section class="block">
+        <p>
+            The short version: if you have one document and you only need numbers
+            on the pages, Preview will get you most of the way. If you have a
+            production spread across several files and you need the numbering to
+            run straight through them, you need a tool built for it. The
+            difference between those two situations is where most problems come
+            from.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>The options, side by side</h2>
+
+        <div class="table-scroll">
+            <table class="compare">
+                <thead>
+                    <tr>
+                        <th scope="col">Option</th>
+                        <th scope="col">Multiple files, one sequence</th>
+                        <th scope="col">Prefix and padding</th>
+                        <th scope="col">Production record</th>
+                        <th scope="col">Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Preview (built in)</th>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Automator / Quartz filter</th>
+                        <td>Not without scripting</td>
+                        <td>Limited</td>
+                        <td>No</td>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Command line (qpdf, pdftk, Python)</th>
+                        <td>Yes, if you write it</td>
+                        <td>Yes, if you write it</td>
+                        <td>Only what you build</td>
+                        <td>Free + your time</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Free single-file apps</th>
+                        <td>No</td>
+                        <td>Usually yes</td>
+                        <td>No</td>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Subscription PDF suites</th>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Varies</td>
+                        <td>Monthly, indefinitely</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">A dedicated Mac app</th>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Depends on the app</td>
+                        <td>One payment</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="block">
+        <h2>Option 1 — Preview</h2>
+        <p>
+            Preview can print a document back to PDF with page numbers, and it
+            can merge documents by dragging pages in the sidebar. For a single
+            exhibit that needs plain numbering, that is often enough.
+        </p>
+        <p>
+            What it cannot do: add a prefix, pad numbers with leading zeros to a
+            fixed width, start from an arbitrary number, or keep a sequence
+            running across separate files. Those four things are what makes a
+            number a Bates number rather than a page number, so Preview does not
+            really do Bates numbering — it does page numbering, which is a
+            different job.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Option 2 — Automator and Quartz filters</h2>
+        <p>
+            macOS ships with Quartz filters, and Automator can apply one to a
+            folder of PDFs. People do build workflows this way.
+        </p>
+        <p>
+            The limitation is structural rather than cosmetic: a Quartz filter is
+            applied to each file independently, so it has no memory of how many
+            pages the previous file had. You can number every file, but each one
+            starts over. Getting a continuous sequence means writing a script
+            that counts pages first and passes a starting number to each file —
+            at which point you are in option 3.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Option 3 — The command line</h2>
+        <p>
+            With <code>qpdf</code>, Ghostscript, or a Python script using a PDF
+            library, you can do anything described on this page. If you are
+            comfortable in a terminal and you produce documents rarely, this is a
+            legitimate answer and it costs nothing.
+        </p>
+        <p>
+            Two cautions. First, the work is not the numbering itself — it is the
+            edge cases: landscape pages, unusual page sizes, existing content
+            near the corner, files that are scans rather than text. Second, a
+            script produces numbered files but not a record of what you produced,
+            and you will want that record later.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Option 4 — A dedicated app</h2>
+        <p>
+            Whatever you use, these are the things to check before you trust it
+            with a real production:
+        </p>
+        <ol>
+            <li>
+                <strong>Does numbering continue across files?</strong> Load three
+                files and confirm the second one does not start at 1. This is the
+                question that matters most, and the one most tools fail.
+            </li>
+            <li>
+                <strong>Can you set the prefix, the digit count and the starting
+                number?</strong> You need all three, not two of them.
+            </li>
+            <li>
+                <strong>Can you see the resulting range before you commit?</strong>
+                Knowing you are about to write
+                <code>ACME000001–ACME000412</code> lets you catch a mistake
+                before it becomes four hundred stamped pages.
+            </li>
+            <li>
+                <strong>Does it leave the originals alone?</strong> Numbered
+                copies should be written somewhere you choose. A tool that
+                overwrites source files makes every mistake permanent.
+            </li>
+            <li>
+                <strong>Does it keep a record?</strong> Ranges, file names, page
+                counts. You will need it.
+            </li>
+            <li>
+                <strong>Does it need an internet connection?</strong> Many
+                web-based PDF tools upload your documents to a server. For client
+                material under a protective order, that is often not acceptable —
+                and frequently not permitted by the firm's own policies.
+            </li>
+        </ol>
+        <p>
+            <strong>Test before you rely on it.</strong> Take three sample files,
+            number them, and open the second one. If its first page reads
+            <code>ACME000001</code> instead of continuing from the first file,
+            stop — that tool is not usable for productions.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>The workflow, in order</h2>
+        <ol>
+            <li>
+                <strong>Assemble.</strong> Put the files in the folder they will
+                be produced from, named and ordered as they should appear.
+                Numbering follows the order, so fix the order first.
+            </li>
+            <li>
+                <strong>Redact.</strong> Always before numbering, never after.
+            </li>
+            <li>
+                <strong>Choose the prefix and the width.</strong> Six digits is a
+                safe default. Decide once, at the start of the matter.
+            </li>
+            <li>
+                <strong>Continue from the last number used.</strong> If this is
+                the second production in the matter, it starts where the first
+                one ended — not at 1.
+            </li>
+            <li>
+                <strong>Number to a new folder.</strong> Originals untouched.
+            </li>
+            <li>
+                <strong>Check.</strong> First page of the first file, last page
+                of the last file, and a couple of pages in the middle. Look for
+                stamps landing on content.
+            </li>
+            <li>
+                <strong>Record it.</strong> Date, prefix, range, files, page
+                counts.
+            </li>
+        </ol>
+    </section>
+
+    <section class="block">
+        <h2>What about the originals?</h2>
+        <p>
+            Keep them. A production is a snapshot: the numbered copies are what
+            went out, the originals are what you had. If a question arises later
+            about whether a produced page matches the source, you need both, plus
+            the record that ties them together.
+        </p>
+        <p>
+            Some tools record a hash of each output file, which is a short
+            fingerprint that changes if the file changes. That turns "these are
+            the documents we produced" from a claim into something you can
+            demonstrate.
+        </p>
+    </section>
+
+    <section class="block">
+        <h2>Related</h2>
+        <p>
+            <a href="what-is-a-bates-number.html">What is a Bates number?</a> —
+            the format, the conventions, and the mistakes.<br>
+            <a href="bates-numbering-multiple-files.html">Numbering across
+            multiple files without restarting</a> — why it goes wrong and how to
+            check.<br>
+            <a href="compare.html">What Bates numbering on a Mac actually
+            costs</a> — the three-year comparison.
+        </p>
+        <p>
+            <a href="index.html">Bates Stamp</a> numbers a whole production in
+            one pass, continuously across files, and writes a CSV register of
+            what it produced. Entirely on your Mac — no account, no upload.
+        </p>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="wrap-wide">
+        <p>BatesStamp — <a href="index.html">Product</a> · <a href="guide.html">Guide</a> · <a href="compare.html">Compare</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a></p>
+        <p class="publisher">
+            BatesStamp is published by LGN Service di Corrado Lagioni<br>
+            Via Mabellini 19, 25015 Desenzano del Garda (BS), Italy<br>
+            Contact: <a href="mailto:batesstamp.support@gmail.com">batesstamp.support@gmail.com</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
