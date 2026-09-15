@@ -12,7 +12,7 @@
 <body>
 
 <header class="site-header">
-    <div class="wrap">
+    <div class="wrap-wide">
         <a class="brand" href="index.html"><img src="icon.png" alt="">BatesStamp</a>
         <nav>
             <a href="index.html" aria-current="page">Product</a>
@@ -24,42 +24,54 @@
     </div>
 </header>
 
-<main>
+<main class="home">
 
-    <div class="wrap">
+    <section class="hero">
+        <div class="wrap-wide hero-grid">
 
-    <div class="hero">
-        <img class="app-icon" src="icon.png" alt="The BatesStamp app icon" width="256" height="256">
-        <h1>Bates numbering for Mac</h1>
-        <p class="lead">
-            Number a production of hundreds of PDFs in one pass. The numbers are
-            real, searchable text. Your originals are never touched, and nothing
-            ever leaves your Mac.
-        </p>
-        <p class="price"><span><strong>$39.99</strong> — one time. No subscription, no renewal.</span></p>
+            <div class="hero-text">
+                <img class="app-icon" src="icon.png" alt="The BatesStamp app icon" width="256" height="256">
+                <h1>Bates numbering for Mac</h1>
+                <p class="lead">
+                    Number a production of hundreds of PDFs in one pass. The numbers are
+                    real, searchable text. Your originals are never touched, and nothing
+                    ever leaves your Mac.
+                </p>
+                <p class="price"><span><strong>$39.99</strong> — one time. No subscription, no renewal.</span></p>
 
-        <p class="store">
-            <a class="store-badge" href="https://apps.apple.com/us/app/bates-stamp-pdf-numbering/id6811325879">
-                <picture>
-                    <source srcset="mac-app-store-badge-white.svg" media="(prefers-color-scheme: dark)">
-                    <img src="mac-app-store-badge-black.svg" alt="Download on the Mac App Store" width="180" height="46">
-                </picture>
-            </a>
-        </p>
-        <p class="availability">Available on the Mac App Store in the United States, the United Kingdom, Canada, Australia and other regions. Not currently on sale in the European Union.</p>
-    </div>
+                <p class="store">
+                    <a class="store-badge" href="https://apps.apple.com/us/app/bates-stamp-pdf-numbering/id6811325879">
+                        <picture>
+                            <source srcset="mac-app-store-badge-white.svg" media="(prefers-color-scheme: dark)">
+                            <img src="mac-app-store-badge-black.svg" alt="Download on the Mac App Store" width="180" height="46">
+                        </picture>
+                    </a>
+                </p>
+                <p class="availability">Available on the Mac App Store in the United States, the United Kingdom, Canada, Australia and other regions. Not currently on sale in the European Union.</p>
+            </div>
 
-    </div>
+            <figure class="shot">
+                <img src="images/1-batch-and-preview.png" width="1440" height="900"
+                     alt="A batch of three PDFs loaded in BatesStamp, the live preview showing SMITH-000010 stamped on the first page of a deposition.">
+            </figure>
+
+        </div>
+    </section>
+
 
     <div class="gallery">
-        <img src="images/1-batch-and-preview.png" width="1440" height="900" loading="lazy"
-             alt="A batch of three PDFs loaded in BatesStamp, the live preview showing SMITH-000010 stamped on the first page of a deposition.">
-        <img src="images/2-numbering-panel.png" width="1440" height="900" loading="lazy"
-             alt="The numbering settings: prefix SMITH-, six digits, and the range SMITH-000030 to SMITH-000058 the batch will produce.">
-        <img src="images/3-batch-summary.png" width="1440" height="900" loading="lazy"
-             alt="The end-of-batch summary: three files stamped, 29 pages numbered, SMITH-000001 to SMITH-000029, register bates_log.csv.">
-        <img src="images/4-search-the-number.png" width="1440" height="900" loading="lazy"
-             alt="A stamped PDF open in Preview, where a search for SMITH- finds the number on all fourteen pages.">
+        <figure class="shot">
+            <img src="images/2-numbering-panel.png" width="1440" height="900" loading="lazy"
+                 alt="The numbering settings: prefix SMITH-, six digits, and the range SMITH-000030 to SMITH-000058 the batch will produce.">
+        </figure>
+        <figure class="shot">
+            <img src="images/3-batch-summary.png" width="1440" height="900" loading="lazy"
+                 alt="The end-of-batch summary: three files stamped, 29 pages numbered, SMITH-000001 to SMITH-000029, register bates_log.csv.">
+        </figure>
+        <figure class="shot">
+            <img src="images/4-search-the-number.png" width="1440" height="900" loading="lazy"
+                 alt="A stamped PDF open in Preview, where a search for SMITH- finds the number on all fourteen pages.">
+        </figure>
     </div>
 
     <div class="wrap">
@@ -72,13 +84,13 @@
             the starting number; the numbering then runs continuously through the
             list, one number per page, across every file — <code>ACME-000001</code>
             on the first page through <code>ACME-004812</code> on the last.
-        </p>
+            </p>
         <p>
             Drag in files or whole folders, put them in the order the production
             needs, choose where the copies go, and press Stamp. When the batch
             finishes, the output folder opens in the Finder with a register of
             exactly what was produced.
-        </p>
+            </p>
     </section>
 
     <section class="block">
@@ -159,13 +171,13 @@
 </main>
 
 <footer class="site-footer">
-    <div class="wrap">
+    <div class="wrap-wide">
         <p>BatesStamp — <a href="guide.html">Guide</a> · <a href="compare.html">Compare</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a></p>
         <p class="publisher">
             BatesStamp is published by LGN Service di Corrado Lagioni<br>
             Via Mabellini 19, 25015 Desenzano del Garda (BS), Italy<br>
             Contact: <a href="mailto:batesstamp.support@gmail.com">batesstamp.support@gmail.com</a>
-        </p>
+            </p>
     </div>
 </footer>
 
