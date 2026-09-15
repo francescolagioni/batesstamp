@@ -304,7 +304,7 @@ main.home { padding-top: 0; }
 .hero {
     background: var(--hero-bg);
     border-bottom: 1px solid var(--line);
-    padding: var(--space-6) 0;
+    padding: var(--space-5) 0;
 }
 
 .hero-grid {
@@ -315,9 +315,11 @@ main.home { padding-top: 0; }
 
 .hero-text { min-width: 0; }
 
+/* The app icon leads the page. macOS icons carry their own shape and their
+   own shadow, so nothing is added here — no frame, no ring, no drop shadow. */
 .hero .app-icon {
-    width: 56px;
-    height: 56px;
+    width: 176px;
+    height: 176px;
     display: block;
     margin-bottom: var(--space-3);
 }
@@ -556,8 +558,12 @@ table.compare tr.is-ours td { color: var(--ink); }
     .features { grid-template-columns: 1fr; gap: var(--space-3); }
     .gallery { padding: 0 var(--space-2); }
     .hero { padding: var(--space-5) 0; }
-    .hero .app-icon { width: 48px; height: 48px; }
     nav { gap: var(--space-1) var(--space-3); }
     table.compare th,
     table.compare td { padding: 0.7rem var(--space-1); }
+}
+
+/* Below 600px the icon steps down so it never crowds the title. */
+@media (max-width: 37.5rem) {
+    .hero .app-icon { width: 120px; height: 120px; }
 }
